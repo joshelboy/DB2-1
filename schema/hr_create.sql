@@ -8,9 +8,10 @@
 -- REGIONS table holds region information for locations
 
 -- DROP TABLE IF EXISTS hr.regions;
-CREATE TABLE IF NOT EXISTS db2.hr.regions (
-    region_id       integer     NOT NULL,
-    region_name     varchar(25),
+CREATE TABLE IF NOT EXISTS hr.regions
+(
+    region_id   integer NOT NULL,
+    region_name varchar(25),
     -- PK
     CONSTRAINT reg_id_pk PRIMARY KEY (region_id)
 );
@@ -19,10 +20,11 @@ CREATE TABLE IF NOT EXISTS db2.hr.regions (
 -- COUNTRIES table holds country information for customers and company locations
 
 -- DROP TABLE IF EXISTS hr.countries;
-CREATE TABLE IF NOT EXISTS db2.hr.countries (
-    country_id      char(2)     NOT NULL,
-    country_name    varchar(40),
-    region_id       integer,
+CREATE TABLE IF NOT EXISTS hr.countries
+(
+    country_id   char(2) NOT NULL,
+    country_name varchar(40),
+    region_id    integer,
     -- PK
     CONSTRAINT country_c_id_pk PRIMARY KEY (country_id),
     -- FK
@@ -36,13 +38,14 @@ CREATE TABLE IF NOT EXISTS db2.hr.countries (
 -- LOCATIONS table holds address information for company departments
 
 -- DROP TABLE IF EXISTS hr.locations;
-CREATE TABLE IF NOT EXISTS db2.hr.locations (
-    location_id     integer         NOT NULL,
-    street_address  varchar(40),
-    postal_code     varchar(12),
-    city            varchar(30)     NOT NULL,
-    state_province  varchar(25),
-    country_id      char(2),
+CREATE TABLE IF NOT EXISTS hr.locations
+(
+    location_id    integer     NOT NULL,
+    street_address varchar(40),
+    postal_code    varchar(12),
+    city           varchar(30) NOT NULL,
+    state_province varchar(25),
+    country_id     char(2),
     -- PK
     CONSTRAINT loc_id_pk PRIMARY KEY (location_id),
     -- FK
@@ -56,7 +59,7 @@ CREATE TABLE IF NOT EXISTS db2.hr.locations (
 -- Starts with 3300
 
 -- DROP SEQUENCE IF EXISTS hr.locations_seq;
-CREATE SEQUENCE IF NOT EXISTS db2.hr.locations_seq
+CREATE SEQUENCE IF NOT EXISTS hr.locations_seq
     INCREMENT 100
     START 3300
     MINVALUE 1

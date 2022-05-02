@@ -7,45 +7,35 @@
 --------------------------------------------------------------------------------
 -- Populating REGIONS table ....
 
-INSERT INTO db2.hr.regions (region_id, region_name)
-VALUES 
-        ( 1
-        , 'Europe' 
-        ),
-        ( 2
-        , 'Americas' 
-        ),
-        ( 3
-        , 'Asia' 
-        ),
-        ( 4
-        , 'Middle East and Africa' 
-        );
+INSERT INTO hr.regions (region_id, region_name)
+VALUES ( 1
+       , 'Europe'),
+       ( 2
+       , 'Americas'),
+       ( 3
+       , 'Asia'),
+       ( 4
+       , 'Middle East and Africa');
 
 --------------------------------------------------------------------------------
 -- Populating COUNTIRES table ....
 
-INSERT INTO db2.hr.countries (country_id, country_name, region_id)
-VALUES 
-        ( 'IT'
-        , 'Italy'
-        , 1 
-        ), 
-        ( 'JP'
-        , 'Japan'
-	    , 3 
-        ), 
-        ( 'US'
-        , 'United States of America'
-        , 2 
-        ), 
-        ( 'CA'
-        , 'Canada'
-        , 2 
-        ), 
-        ( 'CN'
-        , 'China'
-        , 3 
+INSERT INTO hr.countries (country_id, country_name, region_id)
+VALUES ( 'IT'
+       , 'Italy'
+       , 1),
+       ( 'JP'
+       , 'Japan'
+       , 3),
+       ( 'US'
+       , 'United States of America'
+       , 2),
+       ( 'CA'
+       , 'Canada'
+       , 2),
+       ( 'CN'
+       , 'China'
+       , 3
         ), 
         ( 'IN'
         , 'India'
@@ -131,27 +121,24 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating LOCATIONS table ....
 
-INSERT INTO db2.hr.locations (location_id, street_address, postal_code, city, state_province, country_id)
-VALUES 
-        ( 1000 
-        , '1297 Via Cola di Rie'
-        , '00989'
-        , 'Roma'
-        , NULL
-        , 'IT'
-        ),
-        ( 1100 
-        , '93091 Calle della Testa'
-        , '10934'
-        , 'Venice'
-        , NULL
-        , 'IT'
-        ),
-        ( 1200 
-        , '2017 Shinjuku-ku'
-        , '1689'
-        , 'Tokyo'
-        , 'Tokyo Prefecture'
+INSERT INTO hr.locations (location_id, street_address, postal_code, city, state_province, country_id)
+VALUES ( 1000
+       , '1297 Via Cola di Rie'
+       , '00989'
+       , 'Roma'
+       , NULL
+       , 'IT'),
+       ( 1100
+       , '93091 Calle della Testa'
+       , '10934'
+       , 'Venice'
+       , NULL
+       , 'IT'),
+       (  1200
+       ,  '2017 Shinjuku-ku'
+       ,  '1689'
+       ,  'Tokyo'
+       ,  'Tokyo Prefecture'
         , 'JP'
         ),
         ( 1300 
@@ -273,27 +260,24 @@ VALUES
         , 'Geneve'
         , 'CH'
         ),
-        ( 3000 
-        , 'Murtenstrasse 921'
-        , '3095'
-        , 'Bern'
-        , 'BE'
-        , 'CH'
-        ),
-        ( 3100 
-        , 'Pieter Breughelstraat 837'
-        , '3029SK'
-        , 'Utrecht'
-        , 'Utrecht'
-        , 'NL'
-        ),
-        ( 3200 
-        , 'Mariano Escobedo 9991'
-        , '11932'
-        , 'Mexico City'
-        , 'Distrito Federal,'
-        , 'MX'
-        );
+       ( 3000
+       , 'Murtenstrasse 921'
+       , '3095'
+       , 'Bern'
+       , 'BE'
+       , 'CH'),
+       ( 3100
+       , 'Pieter Breughelstraat 837'
+       , '3029SK'
+       , 'Utrecht'
+       , 'Utrecht'
+       , 'NL'),
+       ( 3200
+       , 'Mariano Escobedo 9991'
+       , '11932'
+       , 'Mexico City'
+       , 'Distrito Federal,'
+       , 'MX');
 
 --------------------------------------------------------------------------------
 -- Populating DEPARTMENTS table ....
@@ -301,29 +285,26 @@ VALUES
 -- Disable integrity constraint to EMPLOYEES to load data
 -- ALTER TABLE departments DISABLE CONSTRAINT dept_mgr_fk;
 -- PostgreSQL does not support DISABLE CONSTRAINT.
-ALTER TABLE db2.hr.departments DROP CONSTRAINT dept_mgr_fk;
+ALTER TABLE hr.departments
+    DROP CONSTRAINT dept_mgr_fk;
 
-INSERT INTO db2.hr.departments (department_id, department_name, manager_id, location_id)
-VALUES 
-        ( 10
-        , 'Administration'
-        , 200
-        , 1700
-        ),
-        ( 20
-        , 'Marketing'
-        , 201
-        , 1800
-        ),
-        ( 30
-        , 'Purchasing'
-        , 114
-        , 1700
-	    ),
-        ( 40
-        , 'Human Resources'
-        , 203
-        , 2400
+INSERT INTO hr.departments (department_id, department_name, manager_id, location_id)
+VALUES ( 10
+       , 'Administration'
+       , 200
+       , 1700),
+       ( 20
+       , 'Marketing'
+       , 201
+       , 1800),
+       ( 30
+       , 'Purchasing'
+       , 114
+       , 1700),
+       ( 40
+       , 'Human Resources'
+       , 203
+       , 2400
         ),
         ( 50
         , 'Shipping'
@@ -444,27 +425,23 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating JOBS table ....
 
-INSERT INTO db2.hr.jobs (job_id, job_title, min_salary, max_salary)
-VALUES 
-        ( 'AD_PRES'
-        , 'President'
-        , 20080
-        , 40000
-        ),
-        ( 'AD_VP'
-        , 'Administration Vice President'
-        , 15000
-        , 30000
-        ),
-        ( 'AD_ASST'
-        , 'Administration Assistant'
-        , 3000
-        , 6000
-        ),
-        ( 'FI_MGR'
-        , 'Finance Manager'
-        , 8200
-        , 16000
+INSERT INTO hr.jobs (job_id, job_title, min_salary, max_salary)
+VALUES ( 'AD_PRES'
+       , 'President'
+       , 20080
+       , 40000),
+       ( 'AD_VP'
+       , 'Administration Vice President'
+       , 15000
+       , 30000),
+       ( 'AD_ASST'
+       , 'Administration Assistant'
+       , 3000
+       , 6000),
+       ( 'FI_MGR'
+       , 'Finance Manager'
+       , 8200
+       , 16000
         ),
         ( 'FI_ACCOUNT'
         , 'Accountant'
@@ -545,27 +522,25 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating EMPLOYEES table ....
 
-INSERT INTO db2.hr.employees (employee_id, first_name, last_name, email, phone_number, hire_date,
-    job_id, salary, commission_pct, manager_id, department_id)
-VALUES 
-        ( 100
-        , 'Steven'
-        , 'King'
-        , 'SKING'
-        , '515.123.4567'
-        , TO_DATE('17-06-2003', 'dd-MM-yyyy')
-        , 'AD_PRES'
-        , 24000
-        , NULL
-        , NULL
-        , 90
-        ),
-        ( 101
-        , 'Neena'
-        , 'Kochhar'
-        , 'NKOCHHAR'
-        , '515.123.4568'
-        , TO_DATE('21-09-2005', 'dd-MM-yyyy')
+INSERT INTO hr.employees (employee_id, first_name, last_name, email, phone_number, hire_date,
+                          job_id, salary, commission_pct, manager_id, department_id)
+VALUES ( 100
+       , 'Steven'
+       , 'King'
+       , 'SKING'
+       , '515.123.4567'
+       , TO_DATE('17-06-2003', 'dd-MM-yyyy')
+       , 'AD_PRES'
+       , 24000
+       , NULL
+       , NULL
+       , 90),
+       (  101
+       ,  'Neena'
+       ,  'Kochhar'
+       ,  'NKOCHHAR'
+       ,  '515.123.4568'
+       ,  TO_DATE('21-09-2005', 'dd-MM-yyyy')
         , 'AD_VP'
         , 17000
         , NULL
@@ -1836,33 +1811,32 @@ VALUES
 -- Enable integrity constraint to DEPARTMENTS
 -- ALTER TABLE hr. departments ENABLE CONSTRAINT dept_mgr_fk;
 -- PostgreSQL does not support ENABLE CONSTRAINT.
-ALTER TABLE db2.hr.departments
-ADD CONSTRAINT dept_mgr_fk FOREIGN KEY (manager_id)
-        REFERENCES db2.hr.employees (employee_id)
+ALTER TABLE hr.departments
+    ADD CONSTRAINT dept_mgr_fk FOREIGN KEY (manager_id)
+        REFERENCES hr.employees (employee_id)
         ON UPDATE NO ACTION
         ON DELETE NO ACTION;
 
 --------------------------------------------------------------------------------
 -- Populating JOB_HISTORY table ....
 
-INSERT INTO db2.hr.job_history (employee_id, start_date, end_date, job_id, department_id)
-VALUES 
-        (102
+INSERT INTO hr.job_history (employee_id, start_date, end_date, job_id, department_id)
+VALUES ( 102
        , TO_DATE('13-01-2001', 'dd-MM-yyyy')
        , TO_DATE('24-07-2006', 'dd-MM-yyyy')
        , 'IT_PROG'
-       , 60), 
-        (101
+       , 60),
+       ( 101
        , TO_DATE('21-09-1997', 'dd-MM-yyyy')
        , TO_DATE('27-10-2001', 'dd-MM-yyyy')
        , 'AC_ACCOUNT'
-       , 110), 
-        (101
+       , 110),
+       ( 101
        , TO_DATE('28-10-2001', 'dd-MM-yyyy')
        , TO_DATE('15-03-2005', 'dd-MM-yyyy')
        , 'AC_MGR'
-       , 110), 
-        (201
+       , 110),
+       ( 201
        , TO_DATE('17-02-2004', 'dd-MM-yyyy')
        , TO_DATE('19-12-2007', 'dd-MM-yyyy')
        , 'MK_REP'
