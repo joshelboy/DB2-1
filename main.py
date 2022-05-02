@@ -1,6 +1,6 @@
 import MongoDB
 import Redis
-import PostgreSQL
+import pg_crud as PostgreSQL
 
 def _create():
     if auswahlCRUD == str(1):
