@@ -3,16 +3,17 @@ import jaydebeapi as jdbc
 # sql = 'Select * From world.city'
 postgresql_class = 'org.postgresql.Driver'
 postgresql_jdbc_path = 'lib/postgresql-42.3.4.jar'
-postgresql_url = 'jdbc:postgresql://localhost:5432/db2-1'
+postgresql_url = 'jdbc:postgresql://localhost:5432/'
+postgresql_url_db = 'jdbc:postgresql://localhost:5432/db2'
 postgresql_user = 'postgres'
 postgresql_pw = 'PASSWORD'
 
-conn = jdbc.connect(postgresql_class,
-                    postgresql_url,
-                    [postgresql_user, postgresql_pw],
-                    postgresql_jdbc_path)
+init_conn = jdbc.connect(postgresql_class,
+                         postgresql_url,
+                         [postgresql_user, postgresql_pw],
+                         postgresql_jdbc_path)
 
-curs = conn.cursor()
+init_curs = init_conn.cursor()
 
 # ReadFile
 fileCreate = open("./schema/hr_create.sql", "r")
@@ -20,27 +21,35 @@ filePopulate = open("./schema/hr_populate.sql", "r")
 fileComment = open("./schema/hr_comment.sql", "r")
 
 # SQL
-createDB = 'CREATE DATABASE "db2-1"'
+createDB = 'CREATE DATABASE db2'
 createSchema = 'CREATE SCHEMA hr'
 createTable = fileCreate.read()
 populateTable = filePopulate.read()
 createComment = fileComment.read()
 
-#@TODO: implement go to db2-1
+# @TODO: implement go to db2
 
 # create DB
 try:
-    curs.execute(createDB)
+    init_curs.execute(createDB)
 except:
     print("DB may exists already")
 
+init_curs.close()
+init_conn.close()
 
-#create Schema
+conn = jdbc.connect(postgresql_class,
+                    postgresql_url_db,
+                    [postgresql_user, postgresql_pw],
+                    postgresql_jdbc_path)
+
+curs = conn.cursor()
+
+# create Schema
 try:
     curs.execute(createSchema)
 except:
     print("Schema may exists already")
-
 
 # create Table
 try:
