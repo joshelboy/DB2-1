@@ -7,7 +7,7 @@
 --------------------------------------------------------------------------------
 -- Populating REGIONS table ....
 
-INSERT INTO hr.regions (region_id, region_name) 
+INSERT INTO db2.hr.regions (region_id, region_name)
 VALUES 
         ( 1
         , 'Europe' 
@@ -25,7 +25,7 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating COUNTIRES table ....
 
-INSERT INTO hr.countries (country_id, country_name, region_id)
+INSERT INTO db2.hr.countries (country_id, country_name, region_id)
 VALUES 
         ( 'IT'
         , 'Italy'
@@ -131,7 +131,7 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating LOCATIONS table ....
 
-INSERT INTO hr.locations (location_id, street_address, postal_code, city, state_province, country_id)
+INSERT INTO db2.hr.locations (location_id, street_address, postal_code, city, state_province, country_id)
 VALUES 
         ( 1000 
         , '1297 Via Cola di Rie'
@@ -301,9 +301,9 @@ VALUES
 -- Disable integrity constraint to EMPLOYEES to load data
 -- ALTER TABLE departments DISABLE CONSTRAINT dept_mgr_fk;
 -- PostgreSQL does not support DISABLE CONSTRAINT.
-ALTER TABLE hr.departments DROP CONSTRAINT dept_mgr_fk;
+ALTER TABLE db2.hr.departments DROP CONSTRAINT dept_mgr_fk;
 
-INSERT INTO hr.departments (department_id, department_name, manager_id, location_id)
+INSERT INTO db2.hr.departments (department_id, department_name, manager_id, location_id)
 VALUES 
         ( 10
         , 'Administration'
@@ -444,7 +444,7 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating JOBS table ....
 
-INSERT INTO hr.jobs (job_id, job_title, min_salary, max_salary)
+INSERT INTO db2.hr.jobs (job_id, job_title, min_salary, max_salary)
 VALUES 
         ( 'AD_PRES'
         , 'President'
@@ -545,7 +545,7 @@ VALUES
 --------------------------------------------------------------------------------
 -- Populating EMPLOYEES table ....
 
-INSERT INTO hr.employees (employee_id, first_name, last_name, email, phone_number, hire_date, 
+INSERT INTO db2.hr.employees (employee_id, first_name, last_name, email, phone_number, hire_date,
     job_id, salary, commission_pct, manager_id, department_id)
 VALUES 
         ( 100
@@ -1836,16 +1836,16 @@ VALUES
 -- Enable integrity constraint to DEPARTMENTS
 -- ALTER TABLE hr. departments ENABLE CONSTRAINT dept_mgr_fk;
 -- PostgreSQL does not support ENABLE CONSTRAINT.
-ALTER TABLE hr.departments
+ALTER TABLE db2.hr.departments
 ADD CONSTRAINT dept_mgr_fk FOREIGN KEY (manager_id)
-        REFERENCES hr.employees (employee_id) 
+        REFERENCES db2.hr.employees (employee_id)
         ON UPDATE NO ACTION
         ON DELETE NO ACTION;
 
 --------------------------------------------------------------------------------
 -- Populating JOB_HISTORY table ....
 
-INSERT INTO hr.job_history (employee_id, start_date, end_date, job_id, department_id)
+INSERT INTO db2.hr.job_history (employee_id, start_date, end_date, job_id, department_id)
 VALUES 
         (102
        , TO_DATE('13-01-2001', 'dd-MM-yyyy')
